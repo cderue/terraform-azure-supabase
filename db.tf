@@ -70,3 +70,10 @@ resource "azurerm_container_app" "db" {
     access_key   = azurerm_storage_account.storage.primary_access_key
   }
 }
+
+# File share
+resource "azurerm_storage_share" "pgdata" {
+  name                 = "pgdata"
+  storage_account_name = azurerm_storage_account.storage.name
+  quota                = 50
+}
