@@ -99,3 +99,10 @@ resource "azurerm_container_app" "storage" {
 
   depends_on = [azurerm_container_app.rest, azurerm_container_app.imgproxy]
 }
+
+# File share
+resource "azurerm_storage_share" "storage_data" {
+  name                 = "storage"
+  storage_account_name = azurerm_storage_account.storage.name
+  quota                = 50
+}
