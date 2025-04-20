@@ -17,18 +17,7 @@ resource "random_id" "storage_account_name" {
   byte_length = 8
 }
 
-# File Shares
-resource "azurerm_storage_share" "pgdata" {
-  name                 = "pgdata"
-  storage_account_name = azurerm_storage_account.storage.name
-  quota                = 50
-}
 
-resource "azurerm_storage_share" "storage_data" {
-  name                 = "storage"
-  storage_account_name = azurerm_storage_account.storage.name
-  quota                = 50
-}
 
 # Log Analytics Workspace for Container Apps
 resource "azurerm_log_analytics_workspace" "workspace" {
