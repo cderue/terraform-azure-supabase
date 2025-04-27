@@ -33,26 +33,3 @@ resource "azurerm_container_app_environment" "env" {
   resource_group_name        = azurerm_resource_group.rg.name
   log_analytics_workspace_id = azurerm_log_analytics_workspace.workspace.id
 }
-
-
-
-
-
-  
-
-
-
-  ingress {
-    allow_insecure_connections = false
-    external_enabled           = false
-    target_port                = 3000
-    transport                  = "http"
-  }
-
-  registry {
-    server   = "docker.io"
-    identity = "System"
-  }
-
-  depends_on = [azurerm_container_app.db, azurerm_container_app.analytics]
-}
